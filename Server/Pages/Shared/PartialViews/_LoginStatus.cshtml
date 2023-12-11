@@ -1,0 +1,103 @@
+﻿<ul class="navbar-nav mb-2 mb-lg-0">
+
+	@if (User == null || User.Identity == null || User.Identity.IsAuthenticated == false)
+	{
+		<li class="nav-item">
+			<a class="nav-link" asp-page="/Account/Register">
+				@(Resources.PageTitles.Register)
+			</a>
+		</li>
+
+		<li class="nav-item">
+			<a class="nav-link" asp-page="/Account/Login">
+				@(Resources.PageTitles.Login)
+			</a>
+		</li>
+	}
+	else
+	{
+		<li class="nav-item dropdown">
+			<a class="nav-link dropdown-toggle" href="#" id="adminSettingsNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+				@(Resources.PageTitles.AdminSettings)
+			</a>
+			<ul class="dropdown-menu" aria-labelledby="adminSettingsNavbarDropdown">
+				<li>
+					<a class="dropdown-item" asp-page="/Admin/FileManager/Index">
+						@(Resources.PageTitles.FileManager)
+					</a>
+				</li>
+				<li>
+					<a class="dropdown-item" asp-page="/Admin/Users/Index">
+						@(Resources.DataDictionary.UserManager)
+					</a>
+				</li>
+				<li>
+					<a class="dropdown-item" asp-page="/Admin/Roles/Index">
+						@(Resources.DataDictionary.RoleManager)
+					</a>
+				</li>
+				<li>
+					<a class="dropdown-item" asp-page="/Admin/PageManager/Index">
+						@(Resources.DataDictionary.PageManager)
+					</a>
+				</li>
+				<li>
+					<a class="dropdown-item" asp-page="/Admin/MenuItems/Index">
+						@(Resources.DataDictionary.MenuItemManager)
+					</a>
+				</li>
+				<li>
+					<a class="dropdown-item" asp-page="/Admin/ApplicationHandlers/Index">
+						@(Resources.DataDictionary.ApplicationHandlerManager)
+					</a>
+				</li>
+			</ul>
+		</li>
+
+		<li class="nav-item dropdown">
+			<a class="nav-link dropdown-toggle" href="#" id="userSettingsNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+				@(Resources.PageTitles.UserSettings)
+			</a>
+			<ul class="dropdown-menu" aria-labelledby="userSettingsNavbarDropdown">
+				<li>
+					<a class="dropdown-item" asp-page="/Account/UpdateProfile">
+						@(Resources.PageTitles.UpdateProfile)
+					</a>
+				</li>
+
+				<li>
+					<a class="dropdown-item" asp-page="/Account/ChangePassword">
+						@(Resources.PageTitles.ChangePassword)
+					</a>
+				</li>
+
+				<li><hr class="dropdown-divider"></li>
+
+				<li>
+					<a class="dropdown-item text-danger" asp-page="/Account/Terminate">
+						@(Resources.PageTitles.TerminateAccount)
+					</a>
+				</li>
+
+				<li>
+					<a class="dropdown-item text-warning" asp-page="/Account/Deactivate">
+						@(Resources.PageTitles.DeactivateAccount)
+					</a>
+				</li>
+			</ul>
+		</li>
+
+		<li class="nav-item">
+			<a class="nav-link" asp-page="/Account/Profile">
+				[@(User.Identity.Name)]
+			</a>
+		</li>
+
+		<li class="nav-item">
+			<a class="nav-link" asp-page="/Account/Logout">
+				@(Resources.PageTitles.Logout)
+			</a>
+		</li>
+	}
+
+</ul>

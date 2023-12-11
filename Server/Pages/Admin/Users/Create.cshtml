@@ -1,0 +1,66 @@
+﻿@page
+@model Server.Pages.Admin.Users.CreateModel
+
+@{
+	var pageTitle = $"{Resources.DataDictionary.CreateOf} {Resources.DataDictionary.User}";
+	ViewData[Constants.ViewDataKeyName.PageTitle] = pageTitle;
+}
+
+<form method="post">
+
+	<section-form>
+		<fieldset>
+			<section-form-header>
+				@(pageTitle)
+			</section-form-header>
+
+			<partial name="PartialViews/_DisplayPageMessages" />
+
+			<nzlib-full-input asp-for="ViewModel.EmailAddress" dir="ltr" />
+
+			<nzlib-full-checkbox asp-for="ViewModel.IsEmailAddressVerified" />
+
+			<nzlib-full-input asp-for="ViewModel.Username" dir="ltr" />
+
+			<nzlib-full-input asp-for="ViewModel.Password" dir="ltr" />
+
+			<nzlib-full-input asp-for="ViewModel.FirstName" />
+
+			<nzlib-full-input asp-for="ViewModel.LastName" />
+
+			<nzlib-full-input asp-for="ViewModel.CellPhoneNumber" dir="ltr" />
+
+			<nzlib-full-checkbox asp-for="ViewModel.IsCellPhoneNumberVerified" />
+
+			<nzlib-full-select asp-for="ViewModel.RoleId" asp-items="@(Model.RolesSelectList)" />
+
+			<nzlib-full-checkbox asp-for="ViewModel.IsVisibleInContactUsPage" />
+
+			<nzlib-full-input asp-for="ViewModel.TitleInContactUsPage" />
+
+			<nzlib-full-input asp-for="ViewModel.Ordering" />
+
+			<nzlib-full-checkbox asp-for="ViewModel.IsActive" />
+
+			<nzlib-full-checkbox asp-for="ViewModel.IsProgrammer" />
+
+			<nzlib-full-checkbox asp-for="ViewModel.IsProfilePublic" />
+
+			<nzlib-full-textarea asp-for="ViewModel.Description" />
+
+			<nzlib-full-textarea asp-for="ViewModel.AdminDescription" />
+		</fieldset>
+
+		<section-form-buttons>
+			<button-create />
+			<button-reset />
+		</section-form-buttons>
+
+		<section-form-footer>
+			<a asp-page="Index">
+				@(Html.NZLibGetLinkCaptionForList())
+			</a>
+		</section-form-footer>
+	</section-form>
+
+</form>

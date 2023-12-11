@@ -1,0 +1,69 @@
+﻿namespace NZLib;
+
+public static class Utility
+{
+	public static System.DateTime Now
+	{
+		get
+		{
+			var currentCulture = Thread.CurrentThread.CurrentCulture;
+			var currentUICulture = Thread.CurrentThread.CurrentUICulture;
+			var englishCulture = new System.Globalization.CultureInfo(name: "en-US");
+
+			Thread.CurrentThread.CurrentCulture = englishCulture;
+			Thread.CurrentThread.CurrentUICulture = englishCulture;
+
+			var result = System.DateTime.Now;
+
+			Thread.CurrentThread.CurrentCulture = currentCulture;
+			Thread.CurrentThread.CurrentUICulture = currentUICulture;
+
+			return result;
+		}
+	}
+
+	public static string? FixText(string? text)
+	{
+		if (string.IsNullOrWhiteSpace(value: text))
+		{
+			return null;
+		}
+
+		text = text.Trim();
+
+		while (text.Contains(value: "  "))
+		{
+			text = text.Replace(oldValue: "  ", newValue: " ");
+		}
+
+		return text;
+	}
+
+	public static string? RemoveSpaces(string? text)
+	{
+		if (string.IsNullOrWhiteSpace(value: text))
+		{
+			return null;
+		}
+
+		text = text.Trim();
+
+		text = text.Replace(oldValue: " ", newValue: string.Empty);
+
+		return text;
+	}
+
+	public static string? RemoveSpacesAndMakeTextCaseInsensitive(string? text)
+	{
+		text = RemoveSpaces(text: text);
+
+		if (string.IsNullOrWhiteSpace(value: text))
+		{
+			return text;
+		}
+
+		text = text.ToLower();
+
+		return text;
+	}
+}

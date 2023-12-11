@@ -1,0 +1,48 @@
+﻿@page
+@model Server.Pages.Admin.PageCategories.UpdateModel
+
+@{
+	var pageTitle = $"{Resources.DataDictionary.UpdateOf} {Resources.DataDictionary.PageCategory}";
+	ViewData[Constants.ViewDataKeyName.PageTitle] = pageTitle;
+}
+
+<form method="post">
+
+	<input type="hidden" asp-for="ViewModel.Id" />
+
+	<section-form>
+		<fieldset>
+			<section-form-header>
+				@(pageTitle)
+			</section-form-header>
+
+			<partial name="PartialViews/_DisplayPageMessages" />
+
+			<nzlib-full-input asp-for="ViewModel.Name" />
+
+			<nzlib-full-checkbox asp-for="ViewModel.IsActive" />
+
+			<nzlib-full-input asp-for="ViewModel.Ordering" />
+
+			<nzlib-full-textarea asp-for="ViewModel.Description" />
+		</fieldset>
+
+		<section-form-buttons>
+			<button-save />
+			<button-reset />
+		</section-form-buttons>
+
+		<section-form-footer>
+			<a asp-page="Index">
+				@(Html.NZLibGetLinkCaptionForList())
+			</a>
+			<a asp-page="Details" asp-route-id="@(Model.ViewModel.Id)">
+				@(Html.NZLibGetLinkCaptionForDetails())
+			</a>
+			<a asp-page="Delete" asp-route-id="@(Model.ViewModel.Id)">
+				@(Html.NZLibGetLinkCaptionForDelete())
+			</a>
+		</section-form-footer>
+	</section-form>
+
+</form>

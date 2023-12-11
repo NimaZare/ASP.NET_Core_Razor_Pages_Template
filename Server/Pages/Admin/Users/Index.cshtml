@@ -1,0 +1,135 @@
+﻿@page
+@model Server.Pages.Admin.Users.IndexModel
+
+@{
+	var pageTitle = $"{Resources.DataDictionary.ListOf} {Resources.DataDictionary.Users}";
+	ViewData[Constants.ViewDataKeyName.PageTitle] = pageTitle;
+}
+
+<section-page-header>
+	@(pageTitle)
+</section-page-header>
+
+<section-page-actions>
+	<a asp-page="Create">
+		@(Html.NZLibGetLinkCaptionForCreate())
+	</a>
+</section-page-actions>
+
+<partial name="PartialViews/_DisplayPageMessages" />
+
+<section-table>
+	<table>
+		<caption>
+			@(pageTitle)
+		</caption>
+
+		<thead>
+			<tr>
+				<th>
+					@(Resources.DataDictionary.RowNumber)
+				</th>
+				<th>
+				</th>
+				<th>
+					@(Resources.DataDictionary.EmailAddress)
+				</th>
+				<th>
+					@(Resources.DataDictionary.IsEmailAddressVerified)
+				</th>
+				<th>
+					@(Resources.DataDictionary.Role)
+				</th>
+				<th>
+					@(Resources.DataDictionary.RoleIsActive)
+				</th>
+				<th>
+					@(Resources.DataDictionary.Username)
+				</th>
+				<th>
+					@(Resources.DataDictionary.FirstName)
+				</th>
+				<th>
+					@(Resources.DataDictionary.LastName)
+				</th>
+				<th>
+					@(Resources.DataDictionary.IsActive)
+				</th>
+				<th>
+					@(Resources.DataDictionary.IsProgrammer)
+				</th>
+				<th>
+					@(Resources.DataDictionary.CellPhoneNumber)
+				</th>
+				<th>
+					@(Resources.DataDictionary.IsCellPhoneNumberVerified)
+				</th>
+				<th>
+					@(Resources.DataDictionary.LastLoginDateTime)
+				</th>
+				<th>
+					@(Resources.DataDictionary.IsVisibleInContactUsPage)
+				</th>
+				<th>
+					@(Resources.DataDictionary.InsertDateTime)
+				</th>
+				<th>
+					@(Resources.DataDictionary.UpdateDateTime)
+				</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			@for (var index = 0; index <= Model.ViewModel.Count - 1; index++)
+			{
+				var item = Model.ViewModel[index];
+
+				<tr>
+					@(Html.NZLibDisplayRowNumberWithTd(value: index + 1))
+
+					<table-actions>
+						<a asp-page="Details" asp-route-id="@(item.Id)">
+							@(Html.NZLibGetIconDetails())
+						</a>
+						<a asp-page="Update" asp-route-id="@(item.Id)">
+							@(Html.NZLibGetIconUpdate())
+						</a>
+						<a asp-page="Delete" asp-route-id="@(item.Id)">
+							@(Html.NZLibGetIconDelete())
+						</a>
+					</table-actions>
+
+					@(Html.NZLibDisplayStringWithTd(value: item.EmailAddress))
+
+					@(Html.NZLibDisplayBooleanWithTd(value: item.IsEmailAddressVerified))
+
+					@(Html.NZLibDisplayStringWithTd(value: item.RoleName))
+
+					@(Html.NZLibDisplayBooleanWithTd(value: item.IsRoleActive))
+
+					@(Html.NZLibDisplayStringWithTd(value: item.Username))
+
+					@(Html.NZLibDisplayStringWithTd(value: item.FirstName))
+
+					@(Html.NZLibDisplayStringWithTd(value: item.LastName))
+
+					@(Html.NZLibDisplayBooleanWithTd(value: item.IsActive))
+
+					@(Html.NZLibDisplayBooleanWithTd(value: item.IsProgrammer))
+
+					@(Html.NZLibDisplayStringWithTd(value: item.CellPhoneNumber))
+
+					@(Html.NZLibDisplayBooleanWithTd(value: item.IsCellPhoneNumberVerified))
+
+					@(Html.NZLibDisplayDateTimeWithTd(value: item.LastLoginDateTime))
+
+					@(Html.NZLibDisplayBooleanWithTd(value: item.IsVisibleInContactUsPage))
+
+					@(Html.NZLibDisplayDateTimeWithTd(value: item.InsertDateTime))
+
+					@(Html.NZLibDisplayDateTimeWithTd(value: item.UpdateDateTime))
+				</tr>
+			}
+		</tbody>
+	</table>
+</section-table>

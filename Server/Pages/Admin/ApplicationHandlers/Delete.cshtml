@@ -1,0 +1,57 @@
+﻿@page
+@model Server.Pages.Admin.ApplicationHandlers.DeleteModel
+
+@{
+	var pageTitle = $"{Resources.ButtonCaptions.Delete} {Resources.DataDictionary.ApplicationHandler}";
+	ViewData[Constants.ViewDataKeyName.PageTitle] = pageTitle;
+}
+
+<section-form>
+	<fieldset>
+		<section-form-header>
+			@(pageTitle)
+		</section-form-header>
+
+		<partial name="PartialViews/_DisplayPageMessages" />
+
+		<nzlib-readonly-input asp-for="ViewModel.Id" />
+
+		<nzlib-readonly-input asp-for="ViewModel.Name" />
+
+		<nzlib-readonly-input asp-for="ViewModel.Title" />
+
+		<nzlib-readonly-input asp-for="ViewModel.Path" />
+
+		<nzlib-readonly-input asp-for="ViewModel.AccessTypeTitle" />
+
+		<nzlib-readonly-checkbox asp-for="ViewModel.IsActive" />
+
+		<nzlib-readonly-input asp-for="ViewModel.Ordering" />
+
+		<nzlib-readonly-input asp-for="ViewModel.InsertDateTime" />
+
+		<nzlib-readonly-input asp-for="ViewModel.UpdateDateTime" />
+
+		<nzlib-readonly-textarea asp-for="ViewModel.Description" />
+	</fieldset>
+
+	<form method="post">
+		<section-form-buttons>
+			<input type="hidden" asp-for="ViewModel.Id" />
+
+			<button-delete />
+		</section-form-buttons>
+	</form>
+
+	<section-form-footer>
+		<a asp-page="Index">
+			@(Html.NZLibGetLinkCaptionForList())
+		</a>
+		<a asp-page="Details" asp-route-id="@(Model.ViewModel.Id)">
+			@(Html.NZLibGetLinkCaptionForDetails())
+		</a>
+		<a asp-page="Update" asp-route-id="@(Model.ViewModel.Id)">
+			@(Html.NZLibGetLinkCaptionForUpdate())
+		</a>
+	</section-form-footer>
+</section-form>

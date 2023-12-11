@@ -1,0 +1,58 @@
+﻿@page
+@model Server.Pages.ContactModel
+
+@{
+	var pageTitle = Resources.PageTitles.Contact;
+	ViewData[Constants.ViewDataKeyName.PageTitle] = pageTitle;
+}
+
+<h3>
+	@(pageTitle)
+</h3>
+
+<hr />
+
+<div class="row">
+	<div class="col">
+		@(Resources.DataDictionary.CellPhoneNumber):
+		<a href="tel:09351551295">09351551295</a>
+		<br />
+		@(Resources.DataDictionary.Resume):
+		<a href="https://jobinja.ir/user/nimazare" target="_blank">https://jobinja.ir/user/nimazare</a>
+		<br />
+		@(Resources.DataDictionary.EmailAddress):
+		<a href="mailto:info@nimazare.org" target="_blank">info@nimazare.org</a>
+
+		@* <h5 class="mt-3">
+			@(Resources.DataDictionary.Websites)
+		</h5>
+
+		<ul dir="ltr">
+			<li><a href="" target="_blank"></a></li>
+			<li><a href="" target="_blank"></a></li>
+			<li><a href="" target="_blank"></a></li>
+			<li><a href="" target="_blank"></a></li>
+			<li><a href="" target="_blank"></a></li>
+			<li><a href="" target="_blank"></a></li>
+		</ul> *@
+	</div>
+	<div class="col">
+		<h5>
+			@(Resources.DataDictionary.SocialNetworks)
+		</h5>
+
+		<ul dir="ltr">
+			<li>Telegram: <a href="https://t.me/NimaZareOfficial" target="_blank">https://t.me/NimaZareOfficial</a></li>
+			<li>Telegram Channel: <a href="https://t.me/amolgram/" target="_blank">https://t.me/amolgram</a></li>
+		</ul>
+
+		<ul dir="ltr">
+			<li>Twitter: <a href="https://www.twitter.com/NimaZareOrg" target="_blank">https://www.twitter.com/NimaZareOrg</a></li>
+			<li>GitHub: <a href="https://github.com/nimazare" target="_blank">https://github.com/nimazare</a></li>
+			<li>LinkedIn: <a href="https://www.linkedin.com/in/nimazare" target="_blank">https://www.linkedin.com/in/nimazare</a></li>
+			<li>Instagram: <a href="https://www.instagram.com/nimazareorg" target="_blank">https://www.instagram.com/nimazareorg</a></li>
+		</ul>
+	</div>
+</div>
+
+<hr />

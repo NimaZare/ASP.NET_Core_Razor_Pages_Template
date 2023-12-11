@@ -1,0 +1,73 @@
+﻿@page
+@model Server.Pages.Admin.Users.DetailsModel
+
+@{
+	var pageTitle = $"{Resources.DataDictionary.DetailsOf} {Resources.DataDictionary.User}";
+	ViewData[Constants.ViewDataKeyName.PageTitle] = pageTitle;
+}
+
+<section-form>
+	<fieldset>
+		<section-form-header>
+			@(pageTitle)
+		</section-form-header>
+
+		<partial name="PartialViews/_DisplayPageMessages" />
+
+		<nzlib-readonly-input asp-for="ViewModel.Id" />
+
+		<nzlib-readonly-input asp-for="ViewModel.EmailAddress" dir="ltr" />
+
+		<nzlib-readonly-checkbox asp-for="ViewModel.IsEmailAddressVerified" />
+
+		<nzlib-readonly-checkbox asp-for="ViewModel.IsActive" />
+
+		<nzlib-readonly-input asp-for="ViewModel.Username" dir="ltr" />
+
+		<nzlib-readonly-input asp-for="ViewModel.FirstName" />
+
+		<nzlib-readonly-input asp-for="ViewModel.LastName" />
+
+		<nzlib-readonly-input asp-for="ViewModel.CellPhoneNumber" dir="ltr" />
+
+		<nzlib-readonly-checkbox asp-for="ViewModel.IsCellPhoneNumberVerified" />
+
+		<nzlib-readonly-input asp-for="ViewModel.RoleName" />
+
+		<nzlib-readonly-checkbox asp-for="ViewModel.IsRoleActive" />
+
+		<nzlib-readonly-checkbox asp-for="ViewModel.IsVisibleInContactUsPage" />
+
+		<nzlib-readonly-input asp-for="ViewModel.TitleInContactUsPage" />
+
+		<nzlib-readonly-input asp-for="ViewModel.Ordering" />
+
+		<nzlib-readonly-checkbox asp-for="ViewModel.IsActive" />
+
+		<nzlib-readonly-checkbox asp-for="ViewModel.IsProgrammer" />
+
+		<nzlib-readonly-checkbox asp-for="ViewModel.IsProfilePublic" />
+
+		<nzlib-readonly-input asp-for="ViewModel.LastLoginDateTime" />
+
+		<nzlib-readonly-input asp-for="ViewModel.InsertDateTime" />
+
+		<nzlib-readonly-input asp-for="ViewModel.UpdateDateTime" />
+
+		<nzlib-readonly-textarea asp-for="ViewModel.Description" />
+
+		<nzlib-readonly-textarea asp-for="ViewModel.AdminDescription" />
+	</fieldset>
+
+	<section-form-footer>
+		<a asp-page="Index">
+			@(Html.NZLibGetLinkCaptionForList())
+		</a>
+		<a asp-page="Update" asp-route-id="@(Model.ViewModel.Id)">
+			@(Html.NZLibGetLinkCaptionForUpdate())
+		</a>
+		<a asp-page="Delete" asp-route-id="@(Model.ViewModel.Id)">
+			@(Html.NZLibGetLinkCaptionForDelete())
+		</a>
+	</section-form-footer>
+</section-form>
